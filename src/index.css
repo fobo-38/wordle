@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-family: 'JetBrains Mono';
+  background-color: #FAF7F3;
+}
+
+#word-board {
+  display: grid;
+  width: 350px;
+  margin-left: 105px;
+  grid-template-columns: repeat(5, auto);
+  gap: 5px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  border: 2px solid #dbd8d5;
+}
+
+
+button {
+  position: relative;
+  top: 30px;
+  width: 50px;
+  height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'JetBrains Mono';
+  color: #DCC5B2;
+  border-radius: 5px;
+  background-color: #F0E4D3;
+  border: none;
+  cursor: pointer;
+}
+
+.control {
+  width: 70px;
+  font-size: 20px;
+  margin: 3px;
+}
+
+#row-1, #row-2, #row-3 {
+  position: relative;
+  margin-bottom: 3px;
+}
+
+.keyboard-btn {
+  margin: 3px;
+}
