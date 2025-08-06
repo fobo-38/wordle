@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { wordList } from './wordList';
 
 export default function Board() {
   const [cells, setCells] = useState(Array(30).fill(''));
   const [currentCellIndex, setCurrentCellIndex] = useState(0);
-
+  const randWord = wordList[Math.floor(Math.random() * wordList.length)];
+  console.log(randWord);
+  
   function addChoice(e) {
     const letter = e.target.textContent;
     if (currentCellIndex < 30) { // Checks to see that inputs are still within the cell range
@@ -24,9 +27,8 @@ export default function Board() {
   }
 
   function enterAnswer() {
-    
-  }
 
+  }
 
   return (
     <div id="board">
