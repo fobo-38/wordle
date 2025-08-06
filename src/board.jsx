@@ -1,54 +1,44 @@
 import React, { useState } from "react";
 
 export default function Board() {
-    function addChoice() {
-        
+  const [cells, setCells] = useState(Array(30).fill(''));
+  const [currentCellIndex, setCurrentCellIndex] = useState(0);
+
+  function addChoice(e) {
+    const letter = e.target.textContent;
+    if (currentCellIndex < 30) { // Checks to see that inputs are still within the cell range
+      const newCells = [...cells];
+      newCells[currentCellIndex] = letter;
+      setCells(newCells);
+      setCurrentCellIndex(currentCellIndex + 1); // Move cursor forward
     }
+  }
 
-    function clear() {
-
+  function clear() {
+    if (currentCellIndex > 0) {
+      const newCells = [...cells];
+      newCells[currentCellIndex - 1] = ''; // Clear previous cell
+      setCells(newCells);
+      setCurrentCellIndex(currentCellIndex - 1); // Move cursor back
     }
+  }
 
-    function enterAnswer() {
-
-    }
+  function enterAnswer() {
+    
+  }
 
 
   return (
     <div id="board">
       <h1>Wordle</h1>
-        <div id='word-board'>
-          <div cellIndex='0' className='cell'></div>
-          <div cellIndex='1' className='cell'></div>
-          <div cellIndex='2' className='cell'></div>
-          <div cellIndex='3' className='cell'></div>
-          <div cellIndex='4' className='cell'></div>
-          <div cellIndex='5' className='cell'></div>
-          <div cellIndex='6' className='cell'></div>
-          <div cellIndex='7' className='cell'></div>
-          <div cellIndex='8' className='cell'></div>
-          <div cellIndex='9' className='cell'></div>
-          <div cellIndex='10' className='cell'></div>
-          <div cellIndex='11' className='cell'></div>
-          <div cellIndex='12' className='cell'></div>
-          <div cellIndex='13' className='cell'></div>
-          <div cellIndex='14' className='cell'></div>
-          <div cellIndex='15' className='cell'></div>
-          <div cellIndex='16' className='cell'></div>
-          <div cellIndex='17' className='cell'></div>
-          <div cellIndex='18' className='cell'></div>
-          <div cellIndex='19' className='cell'></div>
-          <div cellIndex='20' className='cell'></div>
-          <div cellIndex='21' className='cell'></div>
-          <div cellIndex='22' className='cell'></div>
-          <div cellIndex='23' className='cell'></div>
-          <div cellIndex='24' className='cell'></div>
-          <div cellIndex='25' className='cell'></div>
-          <div cellIndex='26' className='cell'></div>
-          <div cellIndex='27' className='cell'></div>
-          <div cellIndex='28' className='cell'></div>
-          <div cellIndex='29' className='cell'></div>
-        </div>
+      <div id='word-board'>
+        {cells.map((cell, index) => (
+          // Classname is cell. if cell has value, then classname adds 'filled-cell' to name. (cell filled-cell), otherwise, dont add additional names to classname.
+          <div key={index} cellIndex={index} className={`cell ${cell ? 'filled-cell' : ''}`}>
+            {cell}
+          </div>
+        ))}
+      </div>
 
         <div id="keyboard-display">
             <div id="row-1">

@@ -12,7 +12,7 @@ body {
 #word-board {
   display: grid;
   width: 350px;
-  margin-left: 105px;
+  margin-left: 106px;
   grid-template-columns: repeat(5, auto);
   gap: 5px;
 }
@@ -23,38 +23,41 @@ body {
   align-items: center;
   width: 60px;
   height: 60px;
+  color: #D9A299;
   font-size: 32px;
   font-weight: bold;
   border: 2px solid #dbd8d5;
 }
 
+.filled-cell {
+  border-color: #bdbab7;
+}
 
 button {
-  position: relative;
+  margin: 3px;
   top: 30px;
   width: 50px;
   height: 60px;
   font-size: 32px;
   font-weight: bold;
   font-family: 'JetBrains Mono';
-  color: #DCC5B2;
+  color: #cebaaa;
   border-radius: 5px;
   background-color: #F0E4D3;
-  border: none;
+  border: 2px solid;
   cursor: pointer;
 }
 
 .control {
   width: 70px;
   font-size: 20px;
-  margin: 3px;
 }
 
 #row-1, #row-2, #row-3 {
+  margin-top: 3px;
   position: relative;
-  margin-bottom: 3px;
 }
 
-.keyboard-btn {
-  margin: 3px;
+#keyboard-display {
+  margin-top: 30px;
 }
