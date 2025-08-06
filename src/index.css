@@ -48,6 +48,14 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #dfd0bb;
+}
+
+#start-btn {
+  width: 150px;
+}
+
 .control {
   width: 70px;
   font-size: 20px;
