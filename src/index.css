@@ -9,6 +9,11 @@ body {
   background-color: #FAF7F3;
 }
 
+h1 {
+  position: relative;
+  bottom: 30px
+}
+
 #word-board {
   display: grid;
   width: 350px;
@@ -27,10 +32,29 @@ body {
   font-size: 32px;
   font-weight: bold;
   border: 2px solid #dbd8d5;
+  transition: all 0.3s ease;
 }
 
 .filled-cell {
   border-color: #bdbab7;
+}
+
+.cell.correct {
+  background-color: #8BA888;
+  color: white;
+  border-color: #7a9677;
+}
+
+.cell.present {
+  background-color: #D4B896;
+  color: white;
+  border-color: #c7a77d;
+}
+
+.cell.absent {
+  background-color: #B5B0A8;
+  color: white;
+  border-color: #A19C94;
 }
 
 button {
@@ -41,15 +65,33 @@ button {
   font-size: 32px;
   font-weight: bold;
   font-family: 'JetBrains Mono';
-  color: #cebaaa;
+  color: #af8c74;
   border-radius: 5px;
   background-color: #F0E4D3;
-  border: 2px solid;
+  border: 2px solid #E6D0B8;
   cursor: pointer;
 }
 
 button:hover {
   background-color: #dfd0bb;
+}
+
+.keyboard-btn.correct {
+  background-color: #8BA888;
+  color: white;
+  border-color: #7a9677;
+}
+
+.keyboard-btn.present {
+  background-color: #D4B896;
+  color: white;
+  border-color: #c7a77d;
+}
+
+.keyboard-btn.absent {
+  background-color: #B5B0A8;
+  color: white;
+  border-color: #A19C94;
 }
 
 #start-btn {
@@ -67,5 +109,52 @@ button:hover {
 }
 
 #keyboard-display {
-  margin-top: 30px;
+  margin-top: 60px;
+}
+
+.message {
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #af8c74;
+  background-color: #F0E4D3;
+  border: 2px solid #E6D0B8;
+  border-radius: 8px;
+  max-width: 350px;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  animation: smoothFade 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes smoothFade {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.reset-btn {
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  top: 600px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  background-color: #af8c74;
+  color: white;
+  border: 2px solid #91725e;
+}
+
+.reset-btn:hover {
+  background-color: #91725e;
 }
