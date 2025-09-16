@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { wordList } from './wordList';
 
 export default function Board() {
@@ -15,7 +15,36 @@ export default function Board() {
   const ROW_LENGTH = 5;
   const MAX_ATTEMPTS = 6;
   
-  
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Only process keys when game is playing and board is visible
+      if (gameStatus != 'playing' || isHidden) {
+        return;
+      }
+      const key = event.key.toUpperCase();
+
+      // Handle letter keys (A-Z)
+      if (key.match(/^[A-Z]$/) && key.length === 1) {
+        const fakeEvent = {
+          target: { textContent: key }
+        };
+        addChoice(fakeEvent);
+      }
+      else if (event.key === 'Enter') {
+        enterAnswer();
+      }
+      else if (event.key === 'Backspace') {
+        clear();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [gameStatus, isHidden, currentCellIndex, currentRow, targetWord, cells, cellColors, keyboardColors]);
+
   function start() {
     const randWord = wordList[Math.floor(Math.random() * wordList.length)];
     setTargetWord(randWord.toUpperCase());
@@ -28,8 +57,6 @@ export default function Board() {
     setGameStatus('playing');
     setMessage('');
   }
-
-
 
   function addChoice(e) {
     if (gameStatus != 'playing') {
@@ -148,7 +175,6 @@ export default function Board() {
     if (guess === targetWord) {
       setGameStatus('won');
       setMessage('Congratulations! You Won!');
-      setTimeout(() => setMessage(''), 2000);
       return;
     }
 
@@ -161,7 +187,6 @@ export default function Board() {
     if (nextRow >= MAX_ATTEMPTS) {
       setGameStatus('lost');
       setMessage(`Game Over! The word was ${targetWord}`);
-      setTimeout(() => setMessage(''), 2200);
     }
   }
 
